@@ -23,5 +23,9 @@ module.exports = {
     'ecmaVersion': 'latest',
   },
   'rules': {
+    'require-jsdoc': 0,
+    'indent': ['error', 2, {SwitchCase: 1}],
+    'quotes': [2, 'single', {'avoidEscape': true}],
+    'semi': [2, 'never'],
   },
-};
+}
