@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <title>Web Chat</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/index.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="main-search">
+        <div class="main-search-container">
+          <img src="/static/search.svg" class="main-search-icon">        
+          <label for="main-search" class="hidden"></label>
+          <input type="search" id="main-search" name="q" placeholder="Search" class="invisible-input main-search-input">
+        </div>
+      </div>
+      <div class="chat-info">
+        <span class="chat-info-username">Alex</span>
+      </div>
+    </header>
+    <main>
+      <div class="active-chats">
+        <div class="active-chat">
+          <span class="username">Pavlentii</span>
+          <span class="last-message-time">20:25</span><br>
+          <div class="last-message"></div>
+          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
+        </div>
+        <div class="active-chat current-active-chat">
+          <span class="username">Alex</span>
+          <span class="last-message-time">20:25</span><br>
+          <div class="last-message"></div>
+          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
+        </div>
+        <div class="active-chat">
+          <span class="username">Another User</span>
+          <span class="last-message-time">20:25</span><br>
+          <div class="last-message"></div>
+          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="chat-messages">
+          <div class="chat-message sended-message">
+            <span class="chat-message-text">Message text with really really long text</span>
+            <span class="chat-message-time">20:21</span>
+          </div>
+          <div class="chat-message received-message">
+            <span class="chat-message-text">Message text</span>
+            <span class="chat-message-time">20:22</span>
+          </div>
+          <div class="chat-message sended-message">
+            <span class="chat-message-text">Message with really really really really really really  really  really long text</span>
+            <span class="chat-message-time">20:23</span>
+          </div>
+        </div>
+        <div class="chat-input-container">
+          <textarea class="invisible-input chat-input">
+          </textarea>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
