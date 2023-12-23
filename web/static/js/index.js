@@ -1,38 +1,40 @@
-import { ChatView, ChatHistoryView, ChatInputView } from './views.js'
-import { ChatController, ChatHistoryController } from './controllers.js'
-import { User, ChatModel, ChatHistoryModel, TextMessageModel } from './models.js'
+import {
+  AppView,
+  ChatListView,
+  ChatPlaceholderView,
+  ChatListSearchView
+} from './views/index.js'
+
+import { ChatModel } from './models/chat.js'
+import { ChatListModel } from './models/chatlist.js'
+import { UserModel } from './models/user.js'
+import { AppModel } from './models/app.js'
+
+import { AppController } from './controllers/app.js'
+import { ChatListController } from './controllers/chatlist.js'
+
+import { ModelFactory } from './factories/model.js'
+import { ViewFactory } from './factories/view.js'
+import { ControllerFactory } from './factories/controller.js'
+
 import { Context } from './context.js'
-import { ViewFactory, ModelFactory } from './factories.js'
-import { getCurrentTime } from './time.js'
-import { MessageType } from './types.js'
 
 
-function createChat(username) {
-  
-}
-
-
-const chatHistoryView = new ChatHistoryView()
-const chatInput = new ChatInputView()
-const chatView = new ChatView(chatHistoryView, chatInput)
-
-const viewFactory = new ViewFactory()
 const modelFactory = new ModelFactory()
+const viewFactory = new ViewFactory()
+const controllerFactory = new ControllerFactory()
 
-const user = new User('testUser')
+const chatListModel = new ChatListModel()
+const chatListSearchView = new ChatListSearchView()
+const chatListView = new ChatListView(chatListSearchView, chatListModel, viewFactory)
+const chatListController = new ChatListController(chatListModel, chatListView, viewFactory)
+
+const chatView = new ChatPlaceholderView()
+
+const user = new UserModel('Asket')
 const context = new Context(user)
-const chatModel = new ChatModel()
-const chatHistoryModel = new ChatHistoryModel()
+const appModel = new AppModel(context)
+const appView = new AppView(chatListView, chatView)
+const appController = new AppController(appModel, appView, modelFactory, viewFactory, controllerFactory)
 
-chatHistoryModel.addMessage(
-  new TextMessageModel(user, 'first message')
-)
-
-const chatController = new ChatController(chatModel, chatView, context, modelFactory, viewFactory)
-const chatHistoryController = new ChatHistoryController(chatHistoryModel, chatHistoryView, viewFactory)
-
-
-document.querySelector('main').appendChild(chatView.render())
-
-const receivedMessage = modelFactory.createTextMessageModel(context.user, 'random text', getCurrentTime(), MessageType.Received)
-chatHistoryModel.addMessage(receivedMessage)
+document.querySelector('body').replaceWith(appView.render())

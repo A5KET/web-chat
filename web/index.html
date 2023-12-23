@@ -3,6 +3,7 @@
 
 <html>
   <head>
+    <base href=".">
     <title>Web Chat</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,39 +13,5 @@
     <script type="module" src="/static/js/index.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="main-search">
-        <div class="main-search-container">
-          <img src="/static/search.svg" class="main-search-icon">        
-          <label for="main-search" class="hidden"></label>
-          <input type="search" id="main-search" name="q" placeholder="Search" class="invisible-input main-search-input">
-        </div>
-      </div>
-      <div class="chat-info">
-        <span class="chat-info-username">Alex</span>
-      </div>
-    </header>
-    <main>
-      <div class="active-chats">
-        <div class="active-chat">
-          <span class="username">Pavlentii</span>
-          <span class="last-message-time">20:25</span><br>
-          <div class="last-message"></div>
-          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
-        </div>
-        <div class="active-chat current-active-chat">
-          <span class="username">Alex</span>
-          <span class="last-message-time">20:25</span><br>
-          <div class="last-message"></div>
-          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
-        </div>
-        <div class="active-chat">
-          <span class="username">Another User</span>
-          <span class="last-message-time">20:25</span><br>
-          <div class="last-message"></div>
-          <span class="last-message-text"><img src="/static/arrow-left.svg"> really long message text that overflows</span>
-        </div>
-      </div>
-    </main>
   </body>
 </html>
