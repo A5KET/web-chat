@@ -18,12 +18,20 @@ export const ClassName = {
     Text: 'chat-message-text',
     Time: 'chat-message-time'
   },
-  ChatList: 'active-chats',
+  ChatList: 'chat-list',
   ChatListElement: {
-    Container: 'active-chat',
-    Username: 'active-chat-username',
-    LastMessageTime: 'last-message-time',
-    LastMessageText: 'last-message-text'
+    Container: 'chat-list-element',
+    Username: 'chat-list-element-username',
+    Time: 'chat-list-element-time',
+    LastMessage: {
+      Container: 'chat-list-element-last-message',
+      Icon: 'chat-list-element-icon',
+      Text: 'chat-list-element-last-message-text',
+      Type: {
+        Sended: 'sended',
+        Received: 'received'
+      }
+    }
   },
   HeaderSearch: {
     Container: 'main-search',

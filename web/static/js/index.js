@@ -5,7 +5,6 @@ import {
   ChatListSearchView
 } from './views/index.js'
 
-import { ChatModel } from './models/chat.js'
 import { ChatListModel } from './models/chatlist.js'
 import { UserModel } from './models/user.js'
 import { AppModel } from './models/app.js'
@@ -27,7 +26,7 @@ const controllerFactory = new ControllerFactory()
 const chatListModel = new ChatListModel()
 const chatListSearchView = new ChatListSearchView()
 const chatListView = new ChatListView(chatListSearchView, chatListModel, viewFactory)
-const chatListController = new ChatListController(chatListModel, chatListView, viewFactory)
+const chatListController = new ChatListController(chatListModel, chatListView, viewFactory, controllerFactory)
 
 const chatView = new ChatPlaceholderView()
 
@@ -38,3 +37,12 @@ const appView = new AppView(chatListView, chatView)
 const appController = new AppController(appModel, appView, modelFactory, viewFactory, controllerFactory)
 
 document.querySelector('body').replaceWith(appView.render())
+
+const userModel = new UserModel('Alex')
+const chatModel = modelFactory.createChatModel(userModel)
+
+const userModel2 = new UserModel('Gleb')
+const chatModel2 = modelFactory.createChatModel(userModel2)
+
+chatListModel.addChat(chatModel)
+chatListModel.addChat(chatModel2)

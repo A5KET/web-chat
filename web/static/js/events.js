@@ -14,6 +14,11 @@ export class NewMessageEvent extends Event {
 }
 
 
+export class ChatHistoryUpdateEvent extends Event {
+
+}
+
+
 export class AddChatEvent extends Event {
   constructor(type, chat) {
     super(type)
@@ -41,6 +46,7 @@ export class ChatListChoiceEvent extends Event {
 export const ChatEvents = {
   InputEnter: 'inputEnter',
   NewMessage: 'newMessage',
+  ChatHistoryUpdate: 'chatHistoryUpdate',
   AddChat: 'addChat',
   ChooseChat: 'chooseChatFromChatList',
   ChatListElementClick: 'listElementClick'

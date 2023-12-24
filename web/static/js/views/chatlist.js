@@ -3,6 +3,7 @@ import { ClassName } from './classname.js'
 import { ImageSource } from './images.js'
 import { getTimeStringAsHoursMinutes } from '../time.js'
 import { ChatEvents, ChatListChoiceEvent, ChatListElementClickEvent } from '../events.js'
+import { MessageType } from '../types.js'
 
 
 export class ChatListElementView extends View {
@@ -13,31 +14,58 @@ export class ChatListElementView extends View {
     const username = createElement('span', ClassName.ChatListElement.Username)
     username.textContent = model.user.username
 
-    node.appendChild(createElement('span'))
+    const time = createElement('span', ClassName.ChatListElement.Time)
+
+    const lastMessage = createElement('div', ClassName.ChatListElement.LastMessage.Container)
+
 
     node.appendChild(username)
-
-    if (model.hasMessages) {
-      const message = model.lastMessage
-
-      const time = createElement('span', ClassName.ChatListElement.LastMessageTime)
-      time.textContent = getTimeStringAsHoursMinutes(model.time)
-  
-      const img = createElement('img', ClassName)
-      img.src = ImageSource.ChatListElementArrow
-  
-      const text = createElement('span', ClassName.ChatListElement.LastMessageText)
-      text.textContent = model.text
-  
-      node.appendChild(time)
-      node.appendChild(text)
-    }
+    node.appendChild(time)
+    node.appendChild(lastMessage)
 
     node.addEventListener('click', (event) => {
       this.dispatchEvent(new ChatListElementClickEvent(ChatEvents.ChatListElementClick, model))
     })
 
+    this.lastMessage = lastMessage
+    this.time = time
     this.node = node
+
+    this.updateTime(model.creationTime)
+  }
+
+  updateTime(time) {
+    this.time.textContent = getTimeStringAsHoursMinutes(time)
+  }
+
+  updateLastMessage(message) {
+    const newLastMessage = createElement('div', ClassName.ChatListElement.LastMessage.Container)
+
+    if (message) {
+      const img = createElement('img', ClassName.ChatListElement.LastMessage.Icon)
+      img.src = ImageSource.ChatListElementIcon
+
+      let imgMessageTypeClass = ''
+      switch (message.type) {
+      case MessageType.Received:
+        imgMessageTypeClass = ClassName.ChatListElement.LastMessage.Type.Received
+        break
+      case MessageType.Sended:
+        imgMessageTypeClass = ClassName.ChatListElement.LastMessage.Type.Sended
+      }
+      newLastMessage.classList.add(imgMessageTypeClass)
+
+      const text = createElement('span', ClassName.ChatListElement.LastMessage.Text)
+      text.textContent = message.text
+
+      newLastMessage.appendChild(img)
+      newLastMessage.appendChild(text)
+
+      this.updateTime(message.time)
+    }
+
+    this.lastMessage.replaceWith(newLastMessage)
+    this.lastMessage = newLastMessage
   }
 }
 

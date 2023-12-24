@@ -1,4 +1,5 @@
 export const ImageSource = {
-  ChatListElementArrow: '/static/img/arrow-left.svg',
-  HeaderSearchIcon: '/static/img/search.svg'
+  ChatListElementIcon: '/static/img/arrow-left.svg',
+  HeaderSearchIcon: '/static/img/search.svg',
+  LastMessageIcon: '/static/img/arrow-left.svg'
 }

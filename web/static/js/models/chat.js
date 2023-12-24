@@ -1,13 +1,21 @@
-import { ChatEvents, NewMessageEvent } from '../events.js'
+import { ChatEvents, NewMessageEvent, ChatHistoryUpdateEvent } from '../events.js'
 
 import { Model } from './model.js'
 
 
 export class ChatModel extends Model {
-  constructor(user) {
+  constructor(user, creationTime) {
     super()
     this.user = user
+    this.creationTime = creationTime
     this.messages = []
+  }
+
+  addMessage(message) {
+    this.messages.push(message)
+
+    this.dispatchEvent(new NewMessageEvent(ChatEvents.NewMessage, message))
+    this.dispatchEvent(new ChatHistoryUpdateEvent(ChatEvents.ChatHistoryUpdate))
   }
 
   get lastMessage() {
@@ -21,12 +29,4 @@ export class ChatModel extends Model {
   get numberOfMessages() {
     return this.messages.length
   }
-
-  addMessage(message) {
-    this.messages.push(message)
-
-    const event = new NewMessageEvent(ChatEvents.NewMessage, message)
-    this.dispatchEvent(event)
-  }
-
 }
