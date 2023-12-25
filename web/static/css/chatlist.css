@@ -68,13 +68,19 @@
   transform: rotate(180deg);
 }
 
+.chat-list-element-last-message {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  color: #3F61C8;
+}
+
 .chat-list-element-last-message-text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
   font-weight: 400;
-  color: #3F61C8;
 }
 
 .active.chat-list-element {
@@ -85,14 +91,13 @@
   background: #2648AE;
 }
 
+.active .chat-list-element-last-message {
+  color: #88A6FF;
+}
 .active .chat-list-element-username {
   color: #B9EAFF;
 }
 
 .active .chat-list-element-time {
-  color: #88A6FF;
-}
-
-.active .chat-list-element-last-message-text {
   color: #88A6FF;
 }
