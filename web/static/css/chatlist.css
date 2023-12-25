@@ -85,15 +85,14 @@
   background: #2648AE;
 }
 
-.active.chat-list-element-username {
+.active .chat-list-element-username {
   color: #B9EAFF;
 }
 
-.active.chat-list-element-time {
+.active .chat-list-element-time {
   color: #88A6FF;
 }
 
-.active.chat-list-element-last-message-text {
+.active .chat-list-element-last-message-text {
   color: #88A6FF;
 }
-

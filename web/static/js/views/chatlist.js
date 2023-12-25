@@ -18,18 +18,18 @@ export class ChatListElementView extends View {
 
     const lastMessage = createElement('div', ClassName.ChatListElement.LastMessage.Container)
 
-
     node.appendChild(username)
     node.appendChild(time)
     node.appendChild(lastMessage)
 
     node.addEventListener('click', (event) => {
-      this.dispatchEvent(new ChatListElementClickEvent(ChatEvents.ChatListElementClick, model))
+      this.click()
     })
 
     this.lastMessage = lastMessage
     this.time = time
     this.node = node
+    this.model = model
 
     this.updateTime(model.creationTime)
   }
@@ -66,6 +66,18 @@ export class ChatListElementView extends View {
 
     this.lastMessage.replaceWith(newLastMessage)
     this.lastMessage = newLastMessage
+  }
+
+  click() {
+    this.dispatchEvent(new ChatListElementClickEvent(ChatEvents.ChatListElementClick, this.model))
+  }
+
+  activate() {
+    this.node.classList.add(ClassName.ChatListElement.State.Active)
+  }
+
+  deactivate() {
+    this.node.classList.remove(ClassName.ChatListElement.State.Active)
   }
 }
 

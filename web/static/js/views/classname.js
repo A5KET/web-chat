@@ -31,6 +31,9 @@ export const ClassName = {
         Sended: 'sended',
         Received: 'received'
       }
+    },
+    State: {
+      Active: 'active',
     }
   },
   HeaderSearch: {
