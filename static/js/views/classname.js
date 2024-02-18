@@ -42,5 +42,8 @@ export const ClassName = {
     Icon: 'main-search-icon',
     Label: 'hidden',
     Input: 'invisible-input main-search-input'
+  },
+  MessageContextMenu: {
+    Container: 'message-context-menu'
   }
 }
