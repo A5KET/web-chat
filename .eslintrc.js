@@ -12,6 +12,7 @@ module.exports = {
     'indent': ['error', 2],
     'quotes': ['error', 'single', { 'avoidEscape': true }],
     'semi': ['error', 'never'],
-    'object-curly-spacing': [2, 'always']
+    'object-curly-spacing': [2, 'always'],
+    'eol-last': ['error', 'always']
   },
 }
