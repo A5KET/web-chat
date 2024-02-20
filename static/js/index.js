@@ -17,6 +17,7 @@ import { ViewFactory } from './factories/view.js'
 import { ControllerFactory } from './factories/controller.js'
 
 import { Context } from './context.js'
+import { SocketClient } from './socket.js'
 
 
 const modelFactory = new ModelFactory()
@@ -46,3 +47,13 @@ const chatModel2 = modelFactory.createChatModel(userModel2)
 
 chatListModel.addChat(chatModel)
 chatListModel.addChat(chatModel2)
+
+
+const socketConnection = new WebSocket('ws://' + window.location.host)
+const socketClient = new SocketClient(socketConnection, { user: context.user })
+
+socketConnection.addEventListener('open', () => {
+  socketClient.emit('message', { text: 'text' })
+})
+
+

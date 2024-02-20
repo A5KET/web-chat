@@ -2,13 +2,14 @@ import path from 'path'
 
 import Fastify from 'fastify'
 import appStatic from '@fastify/static'
-
+import { WebSocketServer } from 'ws'
 
 import routes from './routes.js'
+import { SocketServer } from './socket.js'
 
 
 const app = Fastify({
-  logger: true
+  logger: false
 })
 
 app.register(appStatic, {
@@ -19,6 +20,9 @@ app.register(routes)
 
 
 const start = async () => {
+  const socket = new WebSocketServer({ server: app.server })
+  const socketServer = new SocketServer(socket)
+
   try {
     await app.listen({ port: 3000 })
   } catch(error) {
