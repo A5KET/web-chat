@@ -4,8 +4,8 @@ import Fastify from 'fastify'
 import appStatic from '@fastify/static'
 import { WebSocketServer } from 'ws'
 
-import routes from './routes.js'
-import { SocketServer } from './socket.js'
+import routes from './src/routes.js'
+import { SocketServer } from './src/socket.js'
 
 
 const app = Fastify({

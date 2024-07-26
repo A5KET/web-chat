@@ -7,6 +7,7 @@ export class SocketClient extends EventEmitter {
     super()
     this.connection = connection
     this.auth = auth
+    this.context = {}
   }
 
   emit(eventName, ...args) {
@@ -41,8 +42,8 @@ export class SocketServer extends EventEmitter {
     this.server.on('connection', (connection, request) => {
       connection.once('message', (message) => {
         const auth = this.parseMessage(message)
+
         const client = this.clientConstructor(connection, auth)
-        console.log(auth)
 
         connection.on('message', message => this.handleEvent(this.parseMessage(message), client))
 
