@@ -34,3 +34,8 @@ function handleChatClick(chat) {
     </ul>
   </div>
 </template>
+
+
+<style lang="scss">
+@use 'assets/chatlist.scss';
+</style>

@@ -1,0 +1,35 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin blank-input {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+@mixin hidden {
+  visibility: hidden;
+}
+
+@mixin resizable-textarea {
+  display: flex;
+
+  &::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
+
+  textarea {
+    resize: none;
+    overflow: hidden;
+  }
+
+  textarea,
+  &::after {
+    padding: 0.5em;
+    font: inherit;
+  }
+}

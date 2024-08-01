@@ -16,9 +16,13 @@
 </script>
 
 <template>
-  <div class="chat">
+  <div class='chat'>
     <ChatHeader :chat/>
     <ChatHistory :chat :user/>
     <ChatInput />
   </div>
 </template>
+
+<style lang='scss'>
+  @use 'assets/chat.scss';
+</style>

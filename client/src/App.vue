@@ -74,5 +74,5 @@ const activeChat = ref(undefined)
 
 
 <style lang='scss'>
-@use "./assets/styles.scss";
+@use "assets/app.scss";
 </style>
