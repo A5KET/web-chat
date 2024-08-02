@@ -1,18 +1,30 @@
 <script setup>
-  const props = defineProps({
-    chat: {
-      type: Object,
-      required: true
-    },
-    isActive: {
-      type: Boolean
-    }
-  })
+import IconArrow from '@/icons/IconArrow.vue'
+import { minBy, formatDateAsHoursMinutes } from '@/uitls.js'
+
+const props = defineProps({
+  chat: {
+    type: Object,
+    required: true
+  },
+  isActive: {
+    type: Boolean
+  }
+})
+
+const lastMessage = minBy(props.chat.messages, message => message.date) // #TODO for case when there are no messages 
 </script>
 
-<template>
+
+<template> 
   <li class="chat-list-element" :class='{ active: isActive }'>
-    <span class="username">{{ chat.user.username }}</span>
-    
+    <div>
+      <span class="username">{{ chat.user.username }}</span> 
+      <span class="time">{{ formatDateAsHoursMinutes(lastMessage.date) }}</span>
+    </div>
+    <div class="last-message">
+      <IconArrow class="icon"/>
+      <span>{{ lastMessage.text }}</span>
+    </div>
   </li>
 </template>

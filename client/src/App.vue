@@ -29,12 +29,14 @@ const chats = ref([
     {
         id: 1,
         peerId: user1.id,
-        text: 'hello 2'
+        text: 'hello 2',
+        date: new Date()
       },
       {
         id: 2,
         peerId: activeUser.id,
-        text: 'hi 2'
+        text: 'hi 2',
+        date: new Date()
       }
     ]
   },
@@ -45,7 +47,7 @@ const chats = ref([
       {
         id: 1,
         peerId: user2.id,
-        text: 'hello',
+        text: 'hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello',
         date: new Date()
       },
       {
