@@ -14,6 +14,7 @@ const props = defineProps({
 })
 
 function handleChatClick(chat) {
+  console.log('click')
   if (chat != props.activeChat) {
     emit('change', chat)
   }
@@ -29,7 +30,7 @@ function handleChatClick(chat) {
         v-for='chat in chats'
         :chat='chat' 
         :isActive='chat == activeChat' 
-        @click.stop.self="handleChatClick(chat)"
+        @click.stop="handleChatClick(chat)"
       />
     </ul>
   </div>
