@@ -1,18 +1,17 @@
 <script setup>
+  import { inject } from 'vue'
+
   import ChatMessage from './ChatMessage.vue'
 
   const props = defineProps({
     chat: {
       type: Object,
       required: true
-    },
-    user: {
-      type: Object,
-      required: true
     }
   })
+  const context = inject('context')
+  const user = context.user
 
-  console.log(props.user, props.chat.messages)
 </script>
 
 <template>

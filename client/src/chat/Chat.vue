@@ -7,10 +7,6 @@
     chat: {
       type: Object,
       required: true
-    },
-    user: {
-      type: Object,
-      required: true
     }
   })
 </script>
@@ -18,7 +14,7 @@
 <template>
   <div class='chat'>
     <ChatHeader :chat/>
-    <ChatHistory :chat :user/>
+    <ChatHistory :chat/>
     <ChatInput />
   </div>
 </template>

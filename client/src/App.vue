@@ -1,66 +1,18 @@
 <script setup>
-import { ref } from "vue"
+import { ref, onBeforeMount, provide } from 'vue'
 
 import ChatList from "./chatlist/ChatList.vue"
 import Chat from "./chat/Chat.vue"
 import ChatPlaceholder from './chat/ChatPlaceholder.vue'
 
-
-const activeUser = {
-  id: 3,
-  username: 'Test'
-}
-
-const user1 = {
-  id: 1,
-  username: 'Alex'
-}
-
-const user2 = {
-  id: 2,
-  username: 'Boba'
-}
-
-const chats = ref([
-  {
-    id: 1,
-    user: user1,
-    messages: [
-    {
-        id: 1,
-        peerId: user1.id,
-        text: 'hello 2',
-        date: new Date()
-      },
-      {
-        id: 2,
-        peerId: activeUser.id,
-        text: 'hi 2',
-        date: new Date()
-      }
-    ]
-  },
-  {
-    id: 2,
-    user: user2,
-    messages: [
-      {
-        id: 1,
-        peerId: user2.id,
-        text: 'hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello',
-        date: new Date()
-      },
-      {
-        id: 2,
-        peerId: activeUser.id,
-        text: 'hi',
-        date: new Date()
-      }
-    ],
-
+const context = {
+  user: {
+    id: 3,
+    username: 'Test'
   }
-])
+}
 const activeChat = ref(undefined)
+provide('context', context)
 
 </script>
 
