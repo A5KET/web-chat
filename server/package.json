@@ -4,7 +4,8 @@
   "description": "Multiroom webchat",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js | pino-pretty"
+    "start": "node index.js | pino-pretty",
+    "watch": "nodemon index.js | pino-pretty"
   },
   "repository": {
     "type": "git",
