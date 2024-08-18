@@ -1,34 +1,21 @@
-import path from 'path'
-
-import Fastify from 'fastify'
-import appStatic from '@fastify/static'
-import { WebSocketServer } from 'ws'
-
-import routes from './src/routes.js'
-import { SocketServer } from './src/socket.js'
+import App from './src/app.js'
+import { ChatService } from './src/chats/service.js'
+import { InMemoryRepository } from './src/repositories.js'
 
 
-const app = Fastify({
-  logger: false
-})
-
-app.register(appStatic, {
-  root: path.join(path.resolve(), 'static'),
-  prefix: '/static/'
-})
-app.register(routes)
-
-
-const start = async () => {
-  const socket = new WebSocketServer({ server: app.server })
-  const socketServer = new SocketServer(socket)
-
-  try {
-    await app.listen({ port: 3000 })
-  } catch(error) {
-    app.log.error(error)
-    process.exit(1)
-  }
+const repository = new InMemoryRepository()
+const services = {
+  chat: new ChatService(repository)
 }
 
-start()
+const app = App(services, {
+  logger: true
+})
+
+
+app.listen({ port: 3000 }, function (err, address) {
+  if (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+})

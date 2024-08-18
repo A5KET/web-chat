@@ -1,6 +1,7 @@
 <script setup>
 import IconArrow from '@/icons/IconArrow.vue'
 import { minBy, formatDateAsHoursMinutes } from '@/uitls.js'
+import { computed } from 'vue'
 
 const props = defineProps({
   chat: {
@@ -19,7 +20,7 @@ const lastMessage = minBy(props.chat.messages, message => message.date) // #TODO
 <template> 
   <li class="chat-list-element" :class='{ active: isActive }'>
     <div>
-      <span class="username">{{ chat.user.username }}</span> 
+      <span class="username">{{ chat.title }}</span> 
       <span class="time">{{ formatDateAsHoursMinutes(lastMessage.date) }}</span>
     </div>
     <div class="last-message">

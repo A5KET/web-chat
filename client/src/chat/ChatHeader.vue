@@ -10,7 +10,7 @@
 <template>
   <div class="chat-header">
     <div class="chat-info">
-      <span class="username">{{ chat.user.username }}</span>
+      <span class="title">{{ chat.title }}</span>
     </div>
   </div>
 </template>

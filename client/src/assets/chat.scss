@@ -11,7 +11,7 @@
   height: 100%;
   display: flex;
 
-  .username {
+  .title {
     margin: auto 10px;
 
     color: #B9EAFF;
@@ -40,6 +40,12 @@
   border-radius: 20px;
   hyphens: auto;
 
+  .time {
+    margin-left: 8px;
+    float: right;
+    color: #2648AE;
+  }
+
   &.sended {
     align-self: self-end;
     background: #5C85FF;
@@ -47,13 +53,7 @@
 
   &.received {
     align-self: self-start;
-    background: #2E62FF;;
-  }
-
-  .time {
-    margin-left: 5px;
-    float: right;
-    color: #2648AE;
+    background: #2E62FF;
   }
 }
 
@@ -78,12 +78,12 @@
 }
 
 .chat-text-input {
-  @include resizable-textarea;
-
   background: #2648AE;
   min-height: 40px;
   border-radius: 10px;
   padding: 5px;
+
+  @include resizable-textarea;
 
   textarea {
     @include blank-input;
