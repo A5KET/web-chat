@@ -17,12 +17,12 @@ export function minBy(collection, predicate) {
 
 /**
  * 
- * @param {Date} time 
+ * @param {Date} date 
  * @returns 
  */
-export function formatDateAsHoursMinutes(time) {
-  const hours = time.getHours()
-  const minutes = time.getMinutes()
+export function formatDateAsHoursMinutes(date) {
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
 
   const timeString = `${(hours < 10) ? '0' + hours : hours}:${(minutes < 10) ? '0' + minutes : minutes}`
 

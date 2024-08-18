@@ -1,4 +1,6 @@
 <script setup>
+import { formatDateAsHoursMinutes } from '@/uitls.js'
+
   const props = defineProps({
     message: {
       type: Object,
@@ -12,6 +14,7 @@
 
 <template>
   <div class="chat-message" :class="{ sended: isSended, received: !isSended }">
-    {{ message.text }}
+    <span>{{ message.text }}</span>
+    <span class="time">{{  formatDateAsHoursMinutes(message.date) }}</span>
   </div>
 </template>
